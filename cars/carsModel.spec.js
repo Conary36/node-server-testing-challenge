@@ -14,10 +14,15 @@ describe("cars model", () => {
 
     it("should delete a single car", async () => {
       let noCars = await Cars.remove({ name: "Lexus LFA" });
-      expect(car.name).toBe("Lexus LFA");
+      expect(noCars.name).drop("Lexus LFA");
 
       noCars = await Cars.remove({ name: "Ford GT" });
-      expect(car.name).toBe("Ford GT");
+      expect(noCars.name).drop("Ford GT");
     });
   });
+});
+
+beforeEach(async () => {
+  //clear out database before each run
+  await db("cars").truncate();
 });

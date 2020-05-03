@@ -3,11 +3,17 @@ const db = require('../data/dbConfig.js');
 module.exports = {
     get,
     insert,
+    getById,
     remove
 }
-function get(){
-    return db('cars');
+
+function get() {
+  return db("cars");
 }
+function getById(id) {
+  return db("cars").where({ id }).first();
+}
+
  async function insert(car){
     return db('cars')
     .insert(car)
